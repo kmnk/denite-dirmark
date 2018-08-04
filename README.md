@@ -25,4 +25,17 @@
     - By default, `default` group list is displayed. If you want to specify group, pass group name as argument to dirmark source.
 2. Select target directory, and select `delete` action.
 
+## Settings
+Some setting methods are provided.
+
+### `dirmark#set_cache_directory_path(path)`
+Set cache directory path for save dirmarks.
+
+Default: `~/.cache/denite-dirmark`
+
+### `dirmark#set_default_group(group)`
+Set default group name for using denite-dirmark.
+
+Default: `default`
+
 [denite]:https://github.com/Shougo/denite.nvim
