@@ -2,6 +2,7 @@
 """
 denite.nvim kind: add
 """
+import os
 
 from denite.kind.directory import Kind as Directory
 from denite.util import input
@@ -13,6 +14,21 @@ class Kind(Directory):
         super().__init__(vim)
 
         self.name = 'dirmark/add'
+        self.default_action = 'narrow'
+
+    def action_narrow(self, context):
+        target = context['targets'][0]
+        context['sources_queue'].append([
+            {'name': 'dirmark/add', 'args': []},
+        ])
+        context['path'] = target['action__path']
+
+    def action_wide(self, context):
+        target = context['targets'][0]
+        context['sources_queue'].append([
+            {'name': 'dirmark/add', 'args': []},
+        ])
+        context['path'] = os.path.dirname(os.path.dirname(target['action__path']))
 
     def action_add(self, context):
         # TODO: implement multi target add logic
