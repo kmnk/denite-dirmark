@@ -44,5 +44,6 @@ Default: `default`
 3. `regroup` action
 4. `dirmark/group` source (for add/delete/rename group)
 5. separate cache file
+6. add cool highlighting
 
 [denite]:https://github.com/Shougo/denite.nvim
