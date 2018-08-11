@@ -38,4 +38,11 @@ Set default group name for using denite-dirmark.
 
 Default: `default`
 
+## Futures
+1. multi marks adding and deleting
+2. `rename` action
+3. `regroup` action
+4. `dirmark/group` source (for add/delete/rename group)
+5. separate cache file
+
 [denite]:https://github.com/Shougo/denite.nvim
