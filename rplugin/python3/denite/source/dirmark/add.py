@@ -18,6 +18,8 @@ class Source(File):
 
         if not candidates: return candidates
 
+        for c in candidates: c['kind'] = 'dirmark/add'
+
         return candidates
 
 def main(): pass
