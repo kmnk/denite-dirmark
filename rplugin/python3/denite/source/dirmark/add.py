@@ -3,9 +3,9 @@
 denite.nvim source: add
 """
 
-from denite.source.directory_rec import Source as DirectoryRec
+from denite.source.file import Source as File
 
-class Source(DirectoryRec):
+class Source(File):
     def __init__(self, vim):
         super().__init__(vim)
 
@@ -13,7 +13,8 @@ class Source(DirectoryRec):
         self.kind = 'dirmark/add'
 
     def gather_candidates(self, context):
-        candidates = super().gather_candidates(context)
+        candidates = [c for c in super().gather_candidates(context)
+                      if c['kind'] == 'directory']
 
         if not candidates: return candidates
 

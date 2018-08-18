@@ -40,7 +40,7 @@ Pass source name to `:Denite` .
 	You can delete mark by selecting "delete" action.
 
 :Denite dirmark/add				*denite-dirmark-usage-add*
-	1. List directories from current directory (by directory_rec source).
+	1. List directories from current directory (by file source).
 	2. Select target directory and run "add" action.
 	3. Input group name and mark name.
 
