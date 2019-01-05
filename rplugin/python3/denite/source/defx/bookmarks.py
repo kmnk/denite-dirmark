@@ -5,9 +5,12 @@ sys.path.append(
     os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 )
 
-if True:
-    import dirmark.util as dm
-    from denite.source.base import Base
+import dirmark.util as dm
+from denite.source.base import Base
+
+BOOKMARKS_HIGHLIGHT_SYNTAX = [
+    {'name': 'bm_name', 'link': 'Keyword', 're': r'^\[.*\]\ze\s'}
+]
 
 
 class Source(Base):
@@ -16,6 +19,19 @@ class Source(Base):
 
         self.name = 'defx/bookmarks'
         self.kind = 'command'
+
+    def highlight(self):
+        for syn in BOOKMARKS_HIGHLIGHT_SYNTAX:
+            self.vim.command(
+                'syntax match {0}_{1} /{2}/ contained containedin={0}'.format(
+                    self.syntax_name, syn['name'], syn['re']
+                )
+            )
+            self.vim.command(
+                'highlight default link {0}_{1} {2}'.format(
+                    self.syntax_name, syn['name'], syn['link']
+                )
+            )
 
     def gather_candidates(self, context):
         # TODO: get by comma separated group names
@@ -40,7 +56,7 @@ class Source(Base):
 
         return [
             {
-                'word': v['name'],
+                'word': f"[{v['name']}] {v['path']}",
                 'action__name': v['name'],
                 'action__group': group,
                 'action__command': f"call defx#call_action('cd', ['{v['path']}'])",
