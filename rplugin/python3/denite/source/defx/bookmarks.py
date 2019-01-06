@@ -8,8 +8,9 @@ sys.path.append(
 import dirmark.util as dm
 from denite.source.base import Base
 
+
 BOOKMARKS_HIGHLIGHT_SYNTAX = [
-    {'name': 'bm_name', 'link': 'Keyword', 're': r'^\[.*\]\ze\s'}
+    {'name': 'Defx_Bookmark_Name', 'link': 'Statement', 're': r'\[.*\]\ze\s'}
 ]
 
 
