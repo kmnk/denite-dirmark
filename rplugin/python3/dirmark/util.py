@@ -35,7 +35,7 @@ def write(vim, dirmark_dict):
         os.makedirs(__get_cache_directory_path(vim))
 
     with open(__get_cache_file_path(vim), 'w') as f:
-        f.write(json.dumps(dirmark_dict))
+        json.dump(dirmark_dict, f, ensure_ascii=False, indent=2)
 
 def read(vim):
     """
