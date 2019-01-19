@@ -18,7 +18,7 @@ class Source(Base):
     def __init__(self, vim):
         super().__init__(vim)
 
-        self.name = 'defx/bookmarks'
+        self.name = 'defx/dirmark'
         self.kind = 'command'
 
     def highlight(self):
