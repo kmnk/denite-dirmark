@@ -1,7 +1,3 @@
-"""
-denite.nvim source: dirmark
-"""
-
 import os
 import sys
 
@@ -12,8 +8,9 @@ sys.path.append(
 import dirmark.util as dm
 from denite.source.base import Base
 
-DIRMARK_HIGHLIGHT_SYNTAX = [
-    {'name': 'Denite_Dirmark_Name', 'link': 'Statement', 're': r'\[.*\]\ze\s'}
+
+BOOKMARKS_HIGHLIGHT_SYNTAX = [
+    {'name': 'Defx_Bookmark_Name', 'link': 'Statement', 're': r'\[.*\]\ze\s'}
 ]
 
 
@@ -21,11 +18,11 @@ class Source(Base):
     def __init__(self, vim):
         super().__init__(vim)
 
-        self.name = 'dirmark'
-        self.kind = 'dirmark'
+        self.name = 'defx/dirmark'
+        self.kind = 'command'
 
     def highlight(self):
-        for syn in DIRMARK_HIGHLIGHT_SYNTAX:
+        for syn in BOOKMARKS_HIGHLIGHT_SYNTAX:
             self.vim.command(
                 'syntax match {0}_{1} /{2}/ contained containedin={0}'.format(
                     self.syntax_name, syn['name'], syn['re']
@@ -46,7 +43,7 @@ class Source(Base):
         )
 
         if not group or group == '':
-            raise ValueError('group value is invalid:{}'.format(group))
+            raise ValueError(f'Group value is invalid: {group}')
 
         try:
             dirmark_dict = dm.read(self.vim)
@@ -63,7 +60,7 @@ class Source(Base):
                 'word': f"[{v['name']}] {v['path']}",
                 'action__name': v['name'],
                 'action__group': group,
-                'action__path': v['path'],
+                'action__command': f"call defx#call_action('cd', ['{v['path']}'])",
             }
             for v in group_dict['dirmarks']
         ]
