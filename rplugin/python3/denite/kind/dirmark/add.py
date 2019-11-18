@@ -5,7 +5,6 @@ denite.nvim kind: add
 import os
 
 from denite.kind.directory import Kind as Directory
-from denite.util import input
 
 import dirmark.util as dm
 
@@ -33,12 +32,14 @@ class Kind(Directory):
     def action_add(self, context):
         # TODO: implement multi target add logic
         default_group_name = dm.get_default_group(self.vim)
-        group = input(self.vim, context,
-                      prompt='Input group name [' + default_group_name + ']:',
-                      text='')
-        name = input(self.vim, context,
-                     prompt='Input dirmark name:',
-                     text='')
+        group = str(self.vim.call('denite#util#input',
+                                  'Input group name [' + default_group_name + ']:',
+                                  '',
+                                  ''))
+        name = str(self.vim.call('denite#util#input',
+                                 'Input dirmark name:',
+                                 '',
+                                 ''))
 
         if not group or group == '': group = default_group_name
 
