@@ -31,10 +31,10 @@ def write(vim, dirmark_dict):
     """
     write dirmark data to dirmark file
     """
-    if not os.path.isdir(__get_cache_directory_path(vim)):
-        os.makedirs(__get_cache_directory_path(vim))
+    if not os.path.isdir(__get_data_directory_path(vim)):
+        os.makedirs(__get_data_directory_path(vim))
 
-    with open(__get_cache_file_path(vim), 'w') as f:
+    with open(__get_data_file_path(vim), 'w') as f:
         json.dump(dirmark_dict, f, ensure_ascii=False, indent=2)
 
 def read(vim):
@@ -43,15 +43,15 @@ def read(vim):
     except FileNotFoundError
     """
     # TODO: switch parse logic by version
-    with open(__get_cache_file_path(vim)) as f:
+    with open(__get_data_file_path(vim)) as f:
         data = f.read()
         return json.loads(data)
 
-def __get_cache_directory_path(vim):
-    return vim.call('dirmark#get_cache_directory_path')
+def __get_data_directory_path(vim):
+    return vim.call('dirmark#get_data_directory_path')
 
-def __get_cache_file_path(vim):
-    return vim.call('dirmark#get_cache_file_path')
+def __get_data_file_path(vim):
+    return vim.call('dirmark#get_data_file_path')
 
 def main(): pass
 

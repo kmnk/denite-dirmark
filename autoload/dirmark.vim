@@ -19,17 +19,17 @@ function! dirmark#get_data_file_path()
 endfunction
 
 function! dirmark#set_cache_directory_path(path)
-  echohl WarningMsg | echomsg 'dirmark#set_cache_directory_path is deprecated. use dirmark#set_data_directory_path' | echohl None
+  echohl WarningMsg | echomsg 'dirmark#set_cache_directory_path is deprecated. Please use dirmark#set_data_directory_path instead.' | echohl None
   call dirmark#set_data_directory_path(a:path)
 endfunction
 
 function! dirmark#get_cache_directory_path()
-  echohl WarningMsg | echomsg 'dirmark#get_cache_directory_path is deprecated. use dirmark#get_data_directory_path' | echohl None
+  echohl WarningMsg | echomsg 'dirmark#get_cache_directory_path is deprecated. Please use dirmark#get_data_directory_path instead.' | echohl None
   return dirmark#get_data_directory_path()
 endfunction
 
 function! dirmark#get_cache_file_path()
-  echohl WarningMsg | echomsg 'dirdirmark#get_cache_file_path is deprecated. use dirmark#get_data_file_path' | echohl None
+  echohl WarningMsg | echomsg 'dirdirmark#get_cache_file_path is deprecated. Please use dirmark#get_data_file_path instead.' | echohl None
   return dirmark#get_data_file_path()
 endfunction
 
