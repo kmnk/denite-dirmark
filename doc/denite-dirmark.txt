@@ -49,8 +49,8 @@ Pass source name to `:Denite` .
 ===============================================================================
 FUNCTIONS					*denite-dirmark-functions*
 
-dirmark#set_cache_directory_path({path})	*denite-dirmark-functions-set_cache_directory_path*
-	Set cache directory path for save dirmarks.
+dirmark#set_data_directory_path({path})	*denite-dirmark-functions-set_data_directory_path*
+	Set data directory path for save dirmarks.
 	Default: "~/.cache/denite-dirmark"
 
 dirmark#set_default_group({group})		*denite-dirmark-functions-set_default_group*
