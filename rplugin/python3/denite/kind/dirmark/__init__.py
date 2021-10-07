@@ -13,6 +13,10 @@ class Kind(Directory):
 
         self.name = 'dirmark'
 
+    def action_lcd(self, context):
+        target = context['targets'][0]
+        self.vim.command('lcd {0}'.format(target['action__path']))
+
     def action_delete(self, context):
         # TODO: implement multi target delete logic
         target = context['targets'][0]
