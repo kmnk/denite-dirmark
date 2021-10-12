@@ -31,6 +31,7 @@ class Source(Base):
             {
                 'word': group,
                 'action__name': group,
+                'action__default_action': context['args'][0] if len(context['args']) > 0 else ''
             }
             for group in group_dict.keys()
         ]

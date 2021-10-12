@@ -18,7 +18,7 @@ class Kind(Base):
         context['sources_queue'].append([
             {'name': 'dirmark', 'args': [target['action__name']]},
         ])
-        context['default_action'] = 'cd'
+        if target['action__default_action'] != '': context['default_action'] = target['action__default_action']
 
 def main(): pass
 

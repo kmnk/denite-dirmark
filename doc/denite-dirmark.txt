@@ -46,10 +46,13 @@ Pass source name to `:Denite` .
 
 	If you want to get lists from upper directory, select "wide" action.
 
-:Denite dirmark/groups				*denite-dirmark-usage-groups*
+:Denite dirmark/groups[:{default_action_on_dirmark_source}]	*denite-dirmark-usage-groups*
 	1. List saved groups.
 	2. Select target group and run action.
 	3. "dirmark" source of selected group is opened.
+
+	If you want to set default action on "dirmark" source,
+	set action name to first parameter.
 
 ===============================================================================
 FUNCTIONS					*denite-dirmark-functions*
